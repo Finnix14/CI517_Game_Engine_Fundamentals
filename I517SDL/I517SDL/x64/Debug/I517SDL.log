@@ -1,3 +1,6 @@
-﻿  Main.cpp
-C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\Main.cpp(18,2): warning C4551: function call missing argument list
+﻿  Engine.cpp
+C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\Engine.cpp(22,15): warning C4101: 'event': unreferenced local variable
+  Main.cpp
+  Sprite.cpp
+  Generating Code...
   I517SDL.vcxproj -> C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\x64\Debug\I517SDL.exe
