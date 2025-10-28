@@ -1,26 +1,30 @@
 #pragma once
 #include <SDL.h>
 #include <iostream>
-#include "Sprite.h"
+#include "Game.h"
 
+//core engine class, handles main loop and SDL systems
 class Engine
 {
 public:
     Engine();
     ~Engine();
 
+    //starts main loop
     void Run();
 
 private:
-    bool Initialize();
+    //core systems
+    bool Initialise();
     void ProcessInput();
-    void Update();
-    void Render();
     void Cleanup();
 
+    //SDL core components
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
-    bool isRunning = false;
 
-    Sprite* testSprite = nullptr;
+    bool isEngineRunning = false;
+
+    //input events
+    SDL_Event event = {};
 };

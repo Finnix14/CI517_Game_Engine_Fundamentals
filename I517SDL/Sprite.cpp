@@ -1,44 +1,66 @@
 #include "Sprite.h"
 #include <iostream>
 
-
-Sprite::Sprite(SDL_Renderer* renderer, const std::string& filePath, int w, int h)
+//sprite constructor, loads texture from file
+Sprite::Sprite(SDL_Renderer* renderer, const std::string& filePath, int x, int y)
     : renderer(renderer)
 {
-
-    // load a texture into memory from file
     SDL_Surface* tmpSurface = IMG_Load(filePath.c_str());
     if (!tmpSurface)
+    {
         std::cout << "Image load failed: " << IMG_GetError() << std::endl;
+        return;
+    }
 
-
-    // create image
     texture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+
+    //get full texture dimensions
+    int texWidth = 0, texHeight = 0;
+    SDL_QueryTexture(texture, nullptr, nullptr, &texWidth, &texHeight);
+
     SDL_FreeSurface(tmpSurface);
 
+    //full texture used
+    srcRect = { 0, 0, texWidth, texHeight };
 
-    //define sprite rectangle 
-    rect = { 100, 100, w, h };
+    //position + full size
+    destRect.x = x;
+    destRect.y = y;
+    destRect.w = texWidth;
+    destRect.h = texHeight;
 }
-
-//destructor, destroys Texture when closed
+//delets sprite files from memory  
 Sprite::~Sprite()
 {
     SDL_DestroyTexture(texture);
 }
-
-void Sprite::Update(int windowWidth, int windowHeight)
+//updates sprite each frame (not used here)
+void Sprite::Update(int, int) {}
+//renders the sprite to the screen with optional rotation
+void Sprite::Render(float angle)
 {
-    rect.x += velX;
-    rect.y += velY;
-
-    //when reach screen edge, reverse velocity
-    if (rect.x <= 0 || rect.x + rect.w >= windowWidth) velX = -velX;
-    if (rect.y <= 0 || rect.y + rect.h >= windowHeight) velY = -velY;
+    if (texture)
+    {
+        SDL_RenderCopyEx(
+            renderer,
+            texture,
+            nullptr,
+            &destRect,
+            angle,      // rotation in degrees
+            nullptr,    // rotation center (nullptr = center of rect)
+            SDL_FLIP_NONE
+        );
+    }
 }
-
-void Sprite::Render()
+//sets sprite position on screen
+void Sprite::setPosition(int x, int y)
 {
-    //draw texture to screen using, current position and size
-    SDL_RenderCopy(renderer, texture, nullptr, &rect);
+    destRect.x = x;
+    destRect.y = y;
+}
+//sets the size of the sprite
+void Sprite::SetSize(int width, int height)
+{
+    destRect.w = width;
+    destRect.h = height;
 }

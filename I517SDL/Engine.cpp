@@ -1,80 +1,111 @@
 #include "Engine.h"
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
+#include "InputManager.h"
+#include "PlayerCharacter.h"
+InputManager inputManager;
+
+//this engine structure mirros that of Davids SDL engine from CI517
+//just adapted and modularised for readabilty in some classes
 
 Engine::Engine() {}
 Engine::~Engine() { Cleanup(); }
 
-bool Engine::Initialize()
+//initialise SDL systems, window and renderer
+bool Engine::Initialise()
 {
-    //initialise SDL subsystems
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         std::cout << "SDL could not initialize! " << SDL_GetError() << std::endl;
         return false;
     }
 
-    //create a window for rendering output
-    window = SDL_CreateWindow("CI517 Engine System",
+    // Create the main window
+    window = SDL_CreateWindow(
+        GAME_TITLE,
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        960, 540, SDL_WINDOW_SHOWN);
+        SCREEN_WIDTH, SCREEN_HEIGHT,
+        SDL_WINDOW_SHOWN
+    );
 
-    //renderer handles all drawing to the window
+    if (!window)
+    {
+        std::cout << "Window creation failed: " << SDL_GetError() << std::endl;
+        return false;
+    }
+
+    // Create the renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    if (!renderer)
+    {
+        std::cout << "Renderer creation failed: " << SDL_GetError() << std::endl;
+        return false;
+    }
 
-    //load a sprite to visualize the system running
-    testSprite = new Sprite(renderer, "assets/fin.png", 128, 128);
-
-    isRunning = true;
+    std::cout << "Engine initialized successfully.\n";
+    isEngineRunning = true;
     return true;
 }
-
+//main loop
 void Engine::Run()
 {
-    //main engine loop
-    if (!Initialize()) return;
+    if (!Initialise()) return;
+    Game game(renderer, &inputManager);
 
-    while (isRunning)
+    Uint64 lastTick = SDL_GetTicks();
+
+    while (isEngineRunning)
     {
-        ProcessInput();
-        Update();
-        Render();
-        SDL_Delay(16); //fixed 60 FPS loop
-    }
-}
+        Uint64 currentTick = SDL_GetTicks();
+        float deltaTime = (currentTick - lastTick) / 1000.0f;
+        lastTick = currentTick;
 
+        ProcessInput();
+        game.Update(deltaTime);
+
+        SDL_RenderClear(renderer);
+        game.Render(); 
+        SDL_RenderPresent(renderer);
+    }
+
+    Cleanup();
+}
+//event polling / input handling
 void Engine::ProcessInput()
 {
-    //collects window and player input events
     SDL_Event event;
+
+    //collect all events for this frame
     while (SDL_PollEvent(&event))
     {
         if (event.type == SDL_QUIT)
-            isRunning = false;
+        {
+            isEngineRunning = false;
+        }
+
+        //send event to input manager
+        inputManager.ProcessInput(event);
     }
-}
 
-void Engine::Update()
-{
-    //update sprite logic for movment and bouncing on window
-    testSprite->Update(960, 540);
-}
+	//update input manager state
+    inputManager.Update();
 
-void Engine::Render()
-{
-    //rendering pipeline, like clear, draw and present
-    SDL_RenderClear(renderer);
-    testSprite->Render();
-    SDL_RenderPresent(renderer);
 }
-
+//cleanup resources
 void Engine::Cleanup()
 {
-    //responsible resource management
-    //frees allocated memory and SDL resources
-    delete testSprite;
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    std::cout << "Cleaning up engine resources\n";
+
+    if (renderer)
+    {
+        SDL_DestroyRenderer(renderer);
+        renderer = nullptr;
+    }
+
+    if (window)
+    {
+        SDL_DestroyWindow(window);
+        window = nullptr;
+    }
+
     SDL_Quit();
+    std::cout << "Engine shut down\n";
 }
