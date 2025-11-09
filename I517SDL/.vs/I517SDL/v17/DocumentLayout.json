@@ -3,24 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:PlayerCharacter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:PlayerCharacter.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Projectile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:Projectile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Sprite.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:Sprite.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:PlayerCharacter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:InputManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Engine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -37,22 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Sprite.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:Sprite.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:PlayerCharacter.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F4F4ACD2-D0E8-4522-AC6C-172AF699E1C8}|I517SDL.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,11 +66,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 452,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Sprite.h",
               "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Sprite.h",
               "RelativeDocumentMoniker": "Sprite.h",
@@ -75,12 +79,120 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-13T20:58:24.566Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.cpp",
+              "RelativeDocumentMoniker": "Game.cpp",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.cpp",
+              "RelativeToolTip": "Game.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-17T10:52:08.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerCharacter.cpp",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.cpp",
+              "RelativeDocumentMoniker": "PlayerCharacter.cpp",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.cpp",
+              "RelativeToolTip": "PlayerCharacter.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-24T08:38:21.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.h",
+              "RelativeDocumentMoniker": "Game.h",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.h",
+              "RelativeToolTip": "Game.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-17T10:37:29.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerCharacter.h",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.h",
+              "RelativeDocumentMoniker": "PlayerCharacter.h",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.h",
+              "RelativeToolTip": "PlayerCharacter.h",
+              "ViewState": "AgIAABEAAAAAAAAAAAAawB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-24T08:38:11.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Projectile.h",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Projectile.h",
+              "RelativeDocumentMoniker": "Projectile.h",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Projectile.h",
+              "RelativeToolTip": "Projectile.h",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-02T18:13:43.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GameObject.cpp",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.cpp",
+              "RelativeDocumentMoniker": "GameObject.cpp",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.cpp",
+              "RelativeToolTip": "GameObject.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-17T11:09:55.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameObject.h",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.h",
+              "RelativeDocumentMoniker": "GameObject.h",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.h",
+              "RelativeToolTip": "GameObject.h",
+              "ViewState": "AgIAABAAAAAAAAAAAAAiwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-17T11:09:47.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InputManager.cpp",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.cpp",
+              "RelativeDocumentMoniker": "InputManager.cpp",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.cpp",
+              "RelativeToolTip": "InputManager.cpp",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-22T22:20:40.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "InputManager.h",
+              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.h",
+              "RelativeDocumentMoniker": "InputManager.h",
+              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.h",
+              "RelativeToolTip": "InputManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-22T22:20:08.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Engine.cpp",
               "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Engine.cpp",
               "RelativeDocumentMoniker": "Engine.cpp",
@@ -92,57 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InputManager.cpp",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.cpp",
-              "RelativeDocumentMoniker": "InputManager.cpp",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.cpp",
-              "RelativeToolTip": "InputManager.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-22T22:20:40.054Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PlayerCharacter.cpp",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.cpp",
-              "RelativeDocumentMoniker": "PlayerCharacter.cpp",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.cpp",
-              "RelativeToolTip": "PlayerCharacter.cpp",
-              "ViewState": "AgIAABwAAAAAAAAAAAAowEQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-24T08:38:21.409Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Game.cpp",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.cpp",
-              "RelativeDocumentMoniker": "Game.cpp",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.cpp",
-              "RelativeToolTip": "Game.cpp",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAAC8AAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-17T10:52:08.679Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameObject.cpp",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.cpp",
-              "RelativeDocumentMoniker": "GameObject.cpp",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.cpp",
-              "RelativeToolTip": "GameObject.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-17T11:09:55.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "Engine.h",
               "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Engine.h",
               "RelativeDocumentMoniker": "Engine.h",
@@ -154,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "Main.cpp",
               "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Main.cpp",
               "RelativeDocumentMoniker": "Main.cpp",
@@ -166,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "Sprite.cpp",
               "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Sprite.cpp",
               "RelativeDocumentMoniker": "Sprite.cpp",
@@ -175,54 +237,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-13T20:58:45.94Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GameObject.h",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.h",
-              "RelativeDocumentMoniker": "GameObject.h",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\GameObject.h",
-              "RelativeToolTip": "GameObject.h",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABwAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-17T11:09:47.51Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "InputManager.h",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.h",
-              "RelativeDocumentMoniker": "InputManager.h",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\InputManager.h",
-              "RelativeToolTip": "InputManager.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-22T22:20:08.818Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.h",
-              "RelativeDocumentMoniker": "Game.h",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\Game.h",
-              "RelativeToolTip": "Game.h",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-17T10:37:29.823Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PlayerCharacter.h",
-              "DocumentMoniker": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.h",
-              "RelativeDocumentMoniker": "PlayerCharacter.h",
-              "ToolTip": "C:\\Users\\MSI\\Documents\\CI517_Game_Engine_Fundamentals\\I517SDL\\PlayerCharacter.h",
-              "RelativeToolTip": "PlayerCharacter.h",
-              "ViewState": "AgIAABIAAAAAAAAAAAAUwBgAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-24T08:38:11.209Z"
             }
           ]
         },

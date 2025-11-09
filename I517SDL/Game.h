@@ -4,6 +4,8 @@
 #include "GameObject.h"
 #include "InputManager.h"
 #include "PlayerCharacter.h"
+#include "Projectile.h"
+
 
 //screen settings and constants (never change)
 constexpr auto GAME_TITLE = "CI517 SDL Game Example";
@@ -27,6 +29,11 @@ private:
     SDL_Renderer* renderer = nullptr; 
     GameObject* backGround = nullptr; 
     std::vector<GameObject*> items;   //list of active objects
+
+    std::vector<Projectile*> projectiles;
+    float projectileCooldown = 0.0f;    //time remaining before next shot
+    const float projectileCooldownTime = 0.3f; //seconds between shots
+
     bool isPaused = false;
     PlayerCharacter* player;
 };

@@ -1,5 +1,2 @@
-﻿  PlayerCharacter.cpp
-C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\PlayerCharacter.cpp(108,41): warning C4305: '-=': truncation from 'double' to 'float'
-C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\PlayerCharacter.cpp(109,34): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\PlayerCharacter.cpp(111,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  Game.cpp
   I517SDL.vcxproj -> C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\x64\Debug\I517SDL.exe

@@ -85,5 +85,25 @@ void GameObject::ScreenBounce(int w, int h)
     if (x <= 0 || x + width >= w) vx = -vx;
     if (y <= 0 || y + height >= h) vy = -vy;
 }
+//checks for collision with another GameObject using AABB
+bool GameObject::CheckCollision(const GameObject& other) const
+{
+    SDL_Rect a = { static_cast<int>(x), static_cast<int>(y), width, height };
+    SDL_Rect b = { static_cast<int>(other.x), static_cast<int>(other.y), other.width, other.height };
+    return SDL_HasIntersection(&a, &b);
+}
+//bounces object away from another GameObject upon collision
+void GameObject::BounceFrom(const GameObject& other)
+{
+    // More advanced physics could reflect based on position difference.
+    if (x < other.x + other.width && x + width > other.x)
+        vx = -vx;  // horizontal bounce
 
+    if (y < other.y + other.height && y + height > other.y)
+        vy = -vy;  // vertical bounce
+
+    //small position adjustment to prevent getting stuck inside the player
+    x += vx * 0.08f;
+    y += vy * 0.08f;
+}
 

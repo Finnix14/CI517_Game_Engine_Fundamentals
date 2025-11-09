@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "PlayerCharacter.h"
+#include "Projectile.h"
+#include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -48,27 +51,62 @@ void Game::createGameObjects()
 //updates all game logic each frame (with delta time per week 3 exercise)
 void Game::Update(float deltaTime)
 {
-	//update player
+	//updates player input and movement
     player->HandleInput(inputManager, deltaTime);
     player->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
-	player->ScreenWrap(SCREEN_WIDTH, SCREEN_HEIGHT);
+    player->ScreenWrap(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    //update items
+     
+	//projectile cooldown timer
+    if (projectileCooldown > 0.0f)
+        projectileCooldown -= deltaTime;
+
+	//if space is pressed and cooldown is 0, fire projectile
+    if (inputManager->IsKeyPressed(SDL_SCANCODE_SPACE) && projectileCooldown <= 0.0f)
+    {
+		//create projectile at player position, offset forward
+        float px = player->GetX() + cos(player->GetAngle()) * 32.0f;
+        float py = player->GetY() + sin(player->GetAngle()) * 32.0f;
+		//add new projectile to list
+		projectiles.push_back(new Projectile(renderer, "assets/bullet.png", px, py, player->GetAngle())); //create projectile
+
+        projectileCooldown = projectileCooldownTime; //reset cooldown
+    }
+
+	//update GameObjects on screen
     for (auto& item : items) {
         item->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
         item->ScreenWrap(SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
-	//move items
+	//collision detection between player and GameObjects
     for (auto& item : items)
     {
-        float vx = 0.0f;
-        float vy = 0.0f;
-
-        //apply combined velocity
-        if (vx != 0 || vy != 0)
-            item->setVelocity(vx, vy);
+        if (item->getAliveState() && player->getAliveState())
+        {
+            if (player->CheckCollision(*item))
+            {
+                std::cout << "Collision detected! Bouncing off player.\n";
+                item->BounceFrom(*player);
+            }
+        }
     }
+    
+	//cleanup inactive GameObjects
+    items.erase(
+        std::remove_if(items.begin(), items.end(),
+            [](GameObject* item) { return !item->getAliveState(); }),
+        items.end());
+
+	//update projectiles
+    for (auto& p : projectiles)
+        p->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
+
+	//cleamup inactive projectiles
+    projectiles.erase(
+        std::remove_if(projectiles.begin(), projectiles.end(),
+            [](Projectile* p) { return !p->IsAlive(); }),
+        projectiles.end());
 }
 
 //renders all game objects each frame to the window
@@ -80,6 +118,11 @@ void Game::Render()
 	//render items
     for (auto& item : items)
         if (item->getAliveState()) item->Render(item->rotationAngle);
+
+    // render projectiles
+    for (auto& p : projectiles)
+        if (p->IsAlive()) p->Render(p->rotationAngle);
+
 }
 
 Game::~Game()
@@ -87,6 +130,11 @@ Game::~Game()
     for (auto& item : items)
         delete item;
     items.clear();
+
+    for (auto& p : projectiles)
+        delete p;
+    projectiles.clear();
+
     delete player;
 
 }

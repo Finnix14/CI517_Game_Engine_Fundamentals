@@ -16,8 +16,11 @@ public:
     MovementMode currentMode = SMOOTH;
 
 	//movement implementations
-    void StepMove(float deltaTime);
-    void SmoothMove(float deltaTime);
+   // --- Accessors for position and facing ---
+    float GetX() const { return x; }
+    float GetY() const { return y; }
+    float GetAngle() const { return angle; }
+
     void RotateMove(float deltaTime);
     float rotationDegrees = 0.0f;
 
@@ -26,4 +29,5 @@ protected:
     float acceleration = 2.0f;
     float drag = 0.92f;          //slows down movement
     float angle = 0.0f; //current facing direction in radians
+
 };

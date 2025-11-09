@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include <unordered_map>
+#include <unordered_map> //allows for key state storage
 
 //handles keyboard input states
 class InputManager {

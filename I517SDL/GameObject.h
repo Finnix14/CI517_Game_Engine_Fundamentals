@@ -24,11 +24,15 @@ public:
     void ScreenWrap(int screenWidth, int screenHeight);
     void ScreenLimit(int screenWidth, int screenHeight);
     void ScreenBounce(int screenWidth, int screenHeight);
+    bool CheckCollision(const GameObject& other) const;
+    void BounceFrom(const GameObject& other);
 
 	//getters / setters
     bool getAliveState() const { return isActive; }
     void setAlive(bool newState) { isActive = newState; }
     void setSize(int width, int height);
+    void Destroy() { isActive = false; }
+
 
 	float rotationAngle = 0.0f;
 	//make varables accessible to child classes
