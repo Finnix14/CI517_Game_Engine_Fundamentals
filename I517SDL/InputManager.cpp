@@ -10,17 +10,16 @@ void InputManager::ProcessInput(SDL_Event& event)
 //updates input states each frame
 void InputManager::Update()
 {
-    //get current keyboard state
-    currentKeyStates = SDL_GetKeyboardState(&numKeys);
+	const Uint8* keyboard = SDL_GetKeyboardState(&numKeys); //retrieve current key states
+	currentKeyStates = keyboard; //make it an accessable variable
 
-    //initialise previousKeyStates on first run
     if (previousKeyStates.empty())
-        previousKeyStates.resize(numKeys, 0);
+        previousKeyStates.resize(numKeys);
 
-    //update axis each frame
     xAxis = (currentKeyStates[SDL_SCANCODE_D] - currentKeyStates[SDL_SCANCODE_A]);
     yAxis = (currentKeyStates[SDL_SCANCODE_S] - currentKeyStates[SDL_SCANCODE_W]);
 }
+
 //returns true if key is currently held down
 bool InputManager::IsKeyHeld(SDL_Scancode key)
 {
@@ -39,12 +38,13 @@ bool InputManager::IsKeyReleased(SDL_Scancode key)
 //stores our current key states as previous for next frame
 void InputManager::StorePreviousKeyStates()
 {
-	if (!previousKeyStates.empty()) //make sure it's initialised
+	if (!previousKeyStates.empty()) //only store if we have previous states
     {
         previousKeyStates.assign(
             currentKeyStates,
-			currentKeyStates + numKeys //copy current states
+			currentKeyStates + numKeys //store current states as previous
         );
     }
 }
+
 

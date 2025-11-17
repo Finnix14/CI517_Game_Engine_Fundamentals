@@ -17,6 +17,7 @@ public:
 
     //movement
     void setVelocity(float vx, float vy);
+    void SetPosition(float newX, float newY);
     void MultiplyVelocity(float factor);
     void Stop();
 
@@ -40,8 +41,8 @@ protected:
     bool isActive = false;
     float x = 0, y = 0;
 
-    float vx = 20.0f;
-    float vy = 20.0f;
+    float vx = 00.0f;
+    float vy = 00.0f;
 
     Sprite* sprite = nullptr;
     SDL_Renderer* renderer = nullptr;

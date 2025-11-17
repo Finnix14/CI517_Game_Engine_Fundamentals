@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "InputManager.h"
 #include "PlayerCharacter.h"
+#include <SDL_ttf.h>
 InputManager inputManager;
 
 //this engine structure mirros that of Davids SDL engine from CI517
@@ -17,6 +18,13 @@ bool Engine::Initialise()
         std::cout << "SDL could not initialize! " << SDL_GetError() << std::endl;
         return false;
     }
+
+    if (TTF_Init() == -1)
+    {
+        std::cout << "Failed to init SDL_ttf: " << TTF_GetError() << std::endl;
+        return false;
+    }
+
 
     // Create the main window
     window = SDL_CreateWindow(
@@ -48,46 +56,45 @@ bool Engine::Initialise()
 void Engine::Run()
 {
     if (!Initialise()) return;
+
     Game game(renderer, &inputManager);
 
-    Uint64 lastTick = SDL_GetTicks();
+    Uint64 lastTick = SDL_GetTicks64();
 
     while (isEngineRunning)
     {
-        Uint64 currentTick = SDL_GetTicks();
-        float deltaTime = (currentTick - lastTick) / 1000.0f;
+        Uint64 currentTick = SDL_GetTicks64();
+		float deltaTime = (currentTick - lastTick) / 1000.0f; //convert ms to seconds
         lastTick = currentTick;
 
-        ProcessInput();
+        ProcessInput();                 //SDL events only
+        inputManager.Update();          //update current key states
+
         game.Update(deltaTime);
 
         SDL_RenderClear(renderer);
-        game.Render(); 
+        game.Render();
         SDL_RenderPresent(renderer);
+
+		inputManager.StorePreviousKeyStates();  //we update previous key states at end of frame
     }
+
 
     Cleanup();
 }
+
 //event polling / input handling
 void Engine::ProcessInput()
 {
-    SDL_Event event;
+	SDL_Event event; //event variable
 
-    //collect all events for this frame
-    while (SDL_PollEvent(&event))
+	while (SDL_PollEvent(&event)) //if its type quit, set running to false
     {
         if (event.type == SDL_QUIT)
-        {
             isEngineRunning = false;
-        }
 
-        //send event to input manager
         inputManager.ProcessInput(event);
     }
-
-	//update input manager state
-    inputManager.Update();
-
 }
 //cleanup resources
 void Engine::Cleanup()
@@ -106,6 +113,7 @@ void Engine::Cleanup()
         window = nullptr;
     }
 
+    TTF_Quit();
     SDL_Quit();
     std::cout << "Engine shut down\n";
 }

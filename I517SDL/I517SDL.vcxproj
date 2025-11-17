@@ -134,18 +134,22 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Levels.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Levels.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="TextRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

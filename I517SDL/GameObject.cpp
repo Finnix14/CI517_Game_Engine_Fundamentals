@@ -24,6 +24,14 @@ void GameObject::setVelocity(float vx, float vy)
     this->vx = vx;
     this->vy = vy;
 }
+//sets the position of the object and updates sprite position
+void GameObject::SetPosition(float newX, float newY)
+{
+    x = newX;
+    y = newY;
+    if (sprite)
+        sprite->setPosition((int)x, (int)y);
+}
 //handles movement and bouncing off edges
 void GameObject::Update(int windowWidth, int windowHeight, float deltaTime)
 {

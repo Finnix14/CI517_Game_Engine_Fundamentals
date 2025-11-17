@@ -53,12 +53,12 @@ void PlayerCharacter::RotateMove(float deltaTime)
     if (angle > M_PI * 2) angle -= M_PI * 2;
     if (angle < 0) angle += M_PI * 2;
 
-    rotationDegrees = angle * (180.0f / M_PI);
+	rotationDegrees = angle * (180.0f / M_PI); //convert to degrees for rendering
 
 
     // move forward
     if (inputManager->IsKeyHeld(SDL_SCANCODE_W)) {
-        vx = cos(angle) * MOVE_SPEED;
+        vx = cos(angle) * MOVE_SPEED; 
         vy = sin(angle) * MOVE_SPEED;
         x += vx * deltaTime;
         y += vy * deltaTime;
