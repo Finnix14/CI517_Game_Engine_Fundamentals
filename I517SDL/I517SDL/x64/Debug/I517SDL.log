@@ -1,2 +1,4 @@
-﻿  Game.cpp
+﻿  InputManager.cpp
+C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\InputManager.cpp(44,47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\InputManager.cpp(45,47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   I517SDL.vcxproj -> C:\Users\MSI\Documents\CI517_Game_Engine_Fundamentals\I517SDL\x64\Debug\I517SDL.exe

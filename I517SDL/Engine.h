@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "Game.h"
-
+#include "SDL_mixer.h"
 //core engine class, handles main loop and SDL systems
 class Engine
 {

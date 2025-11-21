@@ -16,6 +16,9 @@ public:
     void Render(float angle = 0.0f);
     void setPosition(int x, int y); //move sprite on screen
     void SetSize(int width, int height); //scale sprite
+	//getters for width and height
+    int GetWidth() const { return destRect.w; }
+    int GetHeight() const { return destRect.h; }
 
 private:
     SDL_Renderer* renderer = nullptr;

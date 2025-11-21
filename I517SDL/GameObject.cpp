@@ -8,9 +8,11 @@ GameObject::GameObject(SDL_Renderer* renderer, const std::string& filePath, int 
     this->renderer = renderer;
     this->x = static_cast<float>(x);
     this->y = static_cast<float>(y);
-
     //actually creates the sprite for this object
     sprite = new Sprite(renderer, filePath, x, y);
+	//temporary sprite to get size
+    width = sprite->GetWidth();
+    height = sprite->GetHeight();
     isActive = true;
 }
 //destructor, frees sprite memory   
@@ -29,23 +31,30 @@ void GameObject::SetPosition(float newX, float newY)
 {
     x = newX;
     y = newY;
-    if (sprite)
+    if (!sprite)
         sprite->setPosition((int)x, (int)y);
+
+
 }
 //handles movement and bouncing off edges
 void GameObject::Update(int windowWidth, int windowHeight, float deltaTime)
 {
+
+   
     x += vx * deltaTime;
     y += vy * deltaTime;
-    //update sprite pos so x/y match
-    sprite->setPosition(static_cast<int>(x), static_cast<int>(y));
-    ScreenBounce(windowWidth, windowHeight);
+
+
+    if (!sprite)
+        sprite->setPosition((int)x, (int)y);
+
 }
 //tells sprite to draw itself with optional rotation
 void GameObject::Render(float angle)
 {
-    if (sprite)
-        sprite->Render(angle);
+    if (!sprite)
+        sprite->setPosition((int)x, (int)y);
+
 }
 //resizes sprite and updates internal size for collision on edges
 void GameObject::setSize(int width, int height)
@@ -56,6 +65,7 @@ void GameObject::setSize(int width, int height)
     if (sprite)
         sprite->SetSize(width, height);
 }
+
 //updates velocity by a multiplier
 void GameObject::MultiplyVelocity(float factor)
 {
@@ -114,4 +124,28 @@ void GameObject::BounceFrom(const GameObject& other)
     x += vx * 0.08f;
     y += vy * 0.08f;
 }
+//resolves collision by moving object back to previous position and stopping movement
+void GameObject::resolveCollision(const GameObject& other, float prevX, float prevY)
+{
+    // move player back to previous position
+    x = prevX;
+    y = prevY;
 
+    sprite->setPosition((int)x, (int)y);
+
+    // stop movement entirely
+    vx = 0;
+    vy = 0;
+}
+
+//renders object at position relative to camera
+void GameObject::RenderAtCamera(int camX, int camY, float angle)
+{
+	//screen = world position - camera position
+    int screenX = x - camX;
+    int screenY = y - camY;
+
+	//render and set sprite position
+    sprite->setPosition(screenX, screenY);
+    sprite->Render(angle);
+}

@@ -2,6 +2,9 @@
 #include "InputManager.h"
 #include "PlayerCharacter.h"
 #include <SDL_ttf.h>
+
+//add audio
+#include <SDL_mixer.h>
 InputManager inputManager;
 
 //this engine structure mirros that of Davids SDL engine from CI517
@@ -25,6 +28,9 @@ bool Engine::Initialise()
         return false;
     }
 
+	//initialize SDL_mixer
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    
 
     // Create the main window
     window = SDL_CreateWindow(
@@ -50,6 +56,8 @@ bool Engine::Initialise()
 
     std::cout << "Engine initialized successfully.\n";
     isEngineRunning = true;
+
+
     return true;
 }
 //main loop
@@ -69,8 +77,8 @@ void Engine::Run()
 
         ProcessInput();                 //SDL events only
         inputManager.Update();          //update current key states
-
         game.Update(deltaTime);
+
 
         SDL_RenderClear(renderer);
         game.Render();
@@ -82,7 +90,6 @@ void Engine::Run()
 
     Cleanup();
 }
-
 //event polling / input handling
 void Engine::ProcessInput()
 {
@@ -112,6 +119,11 @@ void Engine::Cleanup()
         SDL_DestroyWindow(window);
         window = nullptr;
     }
+
+	//free audio resources
+    Mix_FreeChunk(NULL);
+	Mix_FreeMusic(NULL);
+	Mix_CloseAudio();
 
     TTF_Quit();
     SDL_Quit();

@@ -7,6 +7,7 @@
 #include "Projectile.h"
 #include "TextRenderer.h"
 #include "Levels.h"
+#include "NPC.h"
 
 
 //screen settings and constants (never change)
@@ -15,7 +16,7 @@ constexpr auto SCREEN_WIDTH = 800;
 constexpr auto SCREEN_HEIGHT = 600;
 constexpr auto FPS = 60;
 //game states
-enum class GameState { MENU, PLAYING, GAMEOVER };
+enum class GameState { MENU, PLAYING, LEVEL_COMPLETE, GAMEOVER };
 
 //controls object creation, updates and rendering
 class Game
@@ -25,9 +26,11 @@ public:
     ~Game();
 
     void Update(float deltaTime);
-    void Render(); 
-	void RestartGame();
-	void loadMap(int levelNumber);
+    void Render();
+    void RestartGame();
+    void loadMap(int levelNumber);
+    void moveWorld(float deltaTime);
+
 
 private:
 
@@ -35,10 +38,13 @@ private:
     int currentLevel = 1;
 
     InputManager* inputManager;
-    SDL_Renderer* renderer = nullptr; 
-    GameObject* backGround = nullptr; 
+    SDL_Renderer* renderer = nullptr;
+    GameObject* backGround = nullptr;
     std::vector<GameObject*> items;   //list of active objects
     std::vector<GameObject*> barriers;   //list of active objects
+    std::vector<NPC*> npcs;
+    float camX = 0;
+    float camY = 0;
 
     std::vector<Projectile*> projectiles;
     float projectileCooldown = 0.0f;    //time remaining before next shot
