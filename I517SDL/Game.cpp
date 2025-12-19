@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 #include <iostream>
 #include "Levels.h"
 #include <SDL_mixer.h>
@@ -43,11 +44,10 @@ Game::Game(SDL_Renderer* renderer, InputManager* input)
 //updates all game logic each frame (with delta time per week 3 exercise)
 void Game::Update(float deltaTime)
 {
-
-
+	//GAME STATE MACHINE
     switch (currentState)
     {
-    case GameState::MENU:
+	    case GameState::MENU: //main menu state
 
         if (inputManager->IsKeyPressed(SDL_SCANCODE_SPACE))
         {
@@ -56,47 +56,54 @@ void Game::Update(float deltaTime)
             currentState = GameState::PLAYING;
         }
         break;
-
-
     case GameState::PLAYING:
     {
-         camX = player->GetX() - SCREEN_WIDTH / 2;
-         camY = player->GetY() - SCREEN_HEIGHT / 2;
-        // 1. Handle input FIRST
+		//input handling
         player->HandleInput(inputManager, deltaTime);
 
-        // 2. Update player (rotation + world position)
+		//player update
+        player->SetCamera(camX, camY);
         player->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
 
+		//camera follow player
+        camX = player->GetX() - SCREEN_WIDTH * 0.5f;
+        camY = player->GetY() - SCREEN_HEIGHT * 0.5f;
 
-        // 3. NPCs chase the updated player world coords
+        float maxCamX = (LEVEL_WIDTH * TILE_SIZE) - SCREEN_WIDTH;
+        float maxCamY = (LEVEL_HEIGHT * TILE_SIZE) - SCREEN_HEIGHT;
+
+        camX = std::clamp(camX, 0.0f, maxCamX);
+        camY = std::clamp(camY, 0.0f, maxCamY);
+
+		//npc update and chase logic
         for (auto& npc : npcs)
+        {
             npc->ChasePlayer(player->GetX(), player->GetY(), deltaTime);
+            npc->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
 
+            for (auto& b : barriers)
+            {
+                if (npc->CheckCollision(*b))
+                {
+                    npc->resolveCollision(*b, npc->previousX, npc->previousY);
+                    npc->setVelocity(0, 0);
+                }
+            }
+        }
 
-		// 4. Player collision with walls
+		//player wall / barrier collision
         for (auto& b : barriers)
         {
             if (player->CheckCollision(*b))
                 player->resolveCollision(*b, player->previousX, player->previousY);
         }
-        // 5. NPC physics + wall collision
-        for (auto& npc : npcs)
-        {
-            npc->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
-            for (auto& b : barriers)
-            {
-                if (npc->CheckCollision(*b))
-                    npc->resolveCollision(*b, npc->previousX, npc->previousY);
-                    npc->setVelocity(0, 0);
-            }
-            
-        }
-		// PROJECTILE COLLISIONS WITH NPCS
+
+		//projectile collision npc / wall
         for (auto& p : projectiles)
         {
             if (!p->IsAlive()) continue;
 
+            //if hit pc
             for (auto& npc : npcs)
             {
                 if (!npc->getAliveState()) continue;
@@ -105,24 +112,32 @@ void Game::Update(float deltaTime)
                 {
                     npc->TakeDamage(1);
                     p->setAlive(false);
-                    break; // stop checking other NPCs for this projectile
+                    break;
+                }
+            }
+
+            if (!p->IsAlive()) continue;
+
+            //hit wall / barrier
+            for (auto& b : barriers)
+            {
+                if (p->CheckCollision(*b))
+                {
+                    p->setAlive(false);
+                    Mix_PlayChannel(-1, soundEffect, 0);
+                    break;
                 }
             }
         }
-		// 6. Player collision with walls (again, after NPCs moved)
-        for (auto& b : barriers)
-        {
-            if (player->CheckCollision(*b))
-                player->resolveCollision(*b, player->previousX, player->previousY);
-        }
-        // 7. Items collision etc
+
+		//items collision
         for (auto& item : items)
         {
             if (player->CheckCollision(*item))
                 item->BounceFrom(*player);
         }
 
-        // ---- PROJECTILES ----
+        // FIRING LOGIC
         if (projectileCooldown > 0.0f)
             projectileCooldown -= deltaTime;
 
@@ -136,40 +151,30 @@ void Game::Update(float deltaTime)
             projectileCooldown = projectileCooldownTime;
         }
 
+		//projectile updates
         for (auto& p : projectiles)
-            p->Update(SCREEN_WIDTH, SCREEN_HEIGHT, deltaTime);
+            p->Update(LEVEL_WIDTH * TILE_SIZE, LEVEL_HEIGHT * TILE_SIZE, deltaTime);
 
-        projectiles.erase(
-            std::remove_if(projectiles.begin(), projectiles.end(),
-                [](Projectile* p) { return !p->IsAlive(); }),
-            projectiles.end()
-        );
+		//clean up dead projectiles, npcs, items
+        projectiles.erase(std::remove_if(projectiles.begin(), projectiles.end(),
+            [](Projectile* p) { return !p->IsAlive(); }), projectiles.end());
 
-        npcs.erase(
-            std::remove_if(npcs.begin(), npcs.end(),
-                [](NPC* n) { return !n->getAliveState(); }),
-            npcs.end()
-        );
+        npcs.erase(std::remove_if(npcs.begin(), npcs.end(),
+            [](NPC* n) { return !n->getAliveState(); }), npcs.end());
 
-        items.erase(
-            std::remove_if(items.begin(), items.end(),
-                [](GameObject* o) { return !o->getAliveState(); }),
-            items.end()
-        );
-
+        items.erase(std::remove_if(items.begin(), items.end(),
+            [](GameObject* o) { return !o->getAliveState(); }), items.end());
 
         break;
     }
-
-
-    case GameState::GAMEOVER:
+    case GameState::GAMEOVER: //game over state
         if (inputManager->IsKeyPressed(SDL_SCANCODE_R))
 
             Mix_HaltMusic(); //stop music indefinitely
             RestartGame();
         break;
 
-    case GameState::LEVEL_COMPLETE:
+	case GameState::LEVEL_COMPLETE: //level complete state
         if (inputManager->IsKeyPressed(SDL_SCANCODE_SPACE))
         {
             currentLevel++;
@@ -204,9 +209,13 @@ void Game::Render()
 {
     if (currentState == GameState::PLAYING)
     {
-        uiText->RenderText("PRESS SPACE TO SHOOT", 250, 250, { 255, 255, 255 });
+		std::string npcText = "NPCs: " + std::to_string(npcs.size());//create text strings for UI display
+		std::string projText = "Bullets: " + std::to_string(projectiles.size());//create text strings for UI display
 
+		uiText->RenderText(npcText.c_str(), 20, 20, { 255,255,255 });//display number of NPCs on screen
+		uiText->RenderText(projText.c_str(), 20, 60, { 255,255,255 }); //display number of projectiles on screen
     }
+
 
     if (currentState == GameState::GAMEOVER)
     {
@@ -248,7 +257,7 @@ void Game::loadMap(int levelNumber)
 {
     std::cout << "\n--- LOADING LEVEL " << levelNumber << " ---\n";
 
-    // FULL RESET OF WORLD DATA
+    //FULL RESET OF WORLD DATA
     for (auto& b : barriers) delete b;
     barriers.clear();
 
@@ -264,7 +273,7 @@ void Game::loadMap(int levelNumber)
         player = nullptr;
     }
 
-    // BUILD LEVEL
+    //BUILD LEVEL
     for (int y = 0; y < LEVEL_HEIGHT; y++)
     {
         for (int x = 0; x < LEVEL_WIDTH; x++)
@@ -275,7 +284,7 @@ void Game::loadMap(int levelNumber)
 
             switch (cell)
             {
-            case 1: // wall
+            case 1: //wall
             {
                 GameObject* wall = new GameObject(renderer, "assets/Square_Cross_Grey.png", worldX, worldY);
                 wall->setSize(TILE_SIZE, TILE_SIZE);
@@ -284,7 +293,7 @@ void Game::loadMap(int levelNumber)
                 break;
             }
 
-            case 2: // barrier
+            case 2: //barrier
             {
                 GameObject* wall = new GameObject(renderer, "assets/Square_Cross_Red.png", worldX, worldY);
                 wall->setSize(TILE_SIZE, TILE_SIZE);
@@ -293,7 +302,7 @@ void Game::loadMap(int levelNumber)
                 break;
             }
 
-            case 3: // NPC
+            case 3: //NPC
             {
                 NPC* npc = new NPC(renderer, "assets/Pawn_Red.png", worldX, worldY);
                 npc->setSize(TILE_SIZE, TILE_SIZE);
@@ -302,7 +311,7 @@ void Game::loadMap(int levelNumber)
                 break;
             }
 
-            case 4: // player
+            case 4: //player
             {
                 player = new PlayerCharacter(renderer, inputManager, "assets/Fin.png", worldX, worldY);
                 player->setSize(28, 28);
@@ -310,7 +319,7 @@ void Game::loadMap(int levelNumber)
                 break;
             }
 
-            case 5: // collectible
+            case 5: //collectible
             {
                 GameObject* item = new GameObject(renderer, "assets/Fin_2.png", worldX, worldY);
                 item->setSize(TILE_SIZE, TILE_SIZE);
@@ -318,7 +327,7 @@ void Game::loadMap(int levelNumber)
                 break;
             }
 
-            case 9: // exit
+            case 9: //exit
             {
                 GameObject* exitObj = new GameObject(renderer, "assets/Star_Yellow.png", worldX, worldY);
                 exitObj->setSize(TILE_SIZE, TILE_SIZE);

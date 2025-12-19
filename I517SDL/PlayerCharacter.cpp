@@ -15,37 +15,39 @@ PlayerCharacter::PlayerCharacter(SDL_Renderer* renderer, InputManager* input, co
 //updates player each frame
 void PlayerCharacter::Update(int windowWidth, int windowHeight, float deltaTime)
 {
-
+    //store previous position for collision resolution
     previousX = x;
     previousY = y;
 
-    // --- MOVEMENT (same as before) ---
+    // --- MOVEMENT ---
     x += vx * deltaTime;
     y += vy * deltaTime;
 
     // === ROTATION TOWARD MOUSE ===
-    const float SPRITE_ROT_OFFSET = 180.0f; // adjust if sprite faces wrong direction
-
     int mx = inputManager->GetMouseX();
     int my = inputManager->GetMouseY();
 
-    // Convert mouse to world position
-    float worldMouseX = mx + camX;
-    float worldMouseY = my + camY;
+    //convert to world space
+    float worldMouseX = mx + cameraX;
+    float worldMouseY = my + cameraY;
 
-    // Calculate direction vector
-    float dx = worldMouseX - (x + width / 2);
-    float dy = worldMouseY - (y + height / 2);
+    //player center
+    float centerX = x + width * 0.5f;
+    float centerY = y + height * 0.5f;
 
-    // Angle in radians
+    //direction
+    float dx = worldMouseX - centerX;
+    float dy = worldMouseY - centerY;
+
+    //angle (radians)
     angle = atan2(dy, dx);
 
+    //convert to degrees
+    rotationDegrees = (angle * 180.0f / M_PI);
+
+    //call GameObject update
     GameObject::Update(windowWidth, windowHeight, 0.0f);
-
-    // Convert to degrees + sprite offset
-    rotationDegrees = (angle * 180.0f / M_PI) + SPRITE_ROT_OFFSET;
 }
-
 //processes input for movement and sets velocity directly
 void PlayerCharacter::HandleInput(InputManager* input, float deltaTime)
 {
@@ -60,10 +62,16 @@ void PlayerCharacter::HandleInput(InputManager* input, float deltaTime)
 
     setVelocity(vx, vy);
 }
-
 //renders player normally
 void PlayerCharacter::Render(float angle)
 {
     sprite->setPosition(x, y);
     sprite->Render(angle);
 }
+//sets camera position
+void PlayerCharacter::SetCamera(float camX, float camY)
+{
+    cameraX = camX;
+    cameraY = camY;
+}
+

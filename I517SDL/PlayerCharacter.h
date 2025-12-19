@@ -9,7 +9,7 @@ public:
 	//constructor, input and update handling
     PlayerCharacter(SDL_Renderer* renderer, InputManager* input, const std::string& filePath, int x, int y);
     void HandleInput(InputManager* input, float deltaTime);
-    void Update(int windowWidth, int windowHeight, float deltaTime) override;
+    void Update(int windowWidth, int windowHeight, float deltaTime);
     void Render(float angle);
 
 	//movement modes (like a state machine)
@@ -24,13 +24,18 @@ public:
     float GetVX() const { return vx; }
     float GetVY() const { return vy; }
 
-
-    void RotateMove(float deltaTime);
     float rotationDegrees = 0.0f;
     float previousX = 0.0f;
     float previousY = 0.0f;
     float camX;
     float camY;
+
+	//camera position
+    float cameraX = 0;
+    float cameraY = 0;
+	//sets camera position
+    void SetCamera(float camX, float camY);
+
 
 protected:
     InputManager* inputManager;

@@ -30,23 +30,20 @@ void GameObject::setVelocity(float vx, float vy)
 void GameObject::SetPosition(float newX, float newY)
 {
     x = newX;
-    y = newY;
+	y = newY; //update internal position
+
     if (!sprite)
-        sprite->setPosition((int)x, (int)y);
-
-
+		sprite->setPosition((int)x, (int)y); //update sprite position
 }
 //handles movement and bouncing off edges
 void GameObject::Update(int windowWidth, int windowHeight, float deltaTime)
 {
-
-   
     x += vx * deltaTime;
-    y += vy * deltaTime;
+	y += vy * deltaTime; //update position based on velocity
 
 
     if (!sprite)
-        sprite->setPosition((int)x, (int)y);
+		sprite->setPosition((int)x, (int)y); //update sprite position
 
 }
 //tells sprite to draw itself with optional rotation
@@ -137,7 +134,6 @@ void GameObject::resolveCollision(const GameObject& other, float prevX, float pr
     vx = 0;
     vy = 0;
 }
-
 //renders object at position relative to camera
 void GameObject::RenderAtCamera(int camX, int camY, float angle)
 {

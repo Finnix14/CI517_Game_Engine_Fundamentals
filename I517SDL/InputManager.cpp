@@ -1,6 +1,7 @@
 #include "InputManager.h"
 #include <iostream>
 
+//processes input events
 void InputManager::ProcessInput(SDL_Event& event)
 {
     // Handle quit
@@ -18,7 +19,7 @@ void InputManager::ProcessInput(SDL_Event& event)
 	// --- MOUSE BUTTON DOWN ---
     if (event.type == SDL_MOUSEBUTTONDOWN)
     {
-        if (event.button.button == SDL_BUTTON_LEFT)
+		if (event.button.button == SDL_BUTTON_LEFT) //left button pressed
         {
 			//update mouse left button states
             mouseLeftPressed = true;
@@ -29,7 +30,7 @@ void InputManager::ProcessInput(SDL_Event& event)
 	// --- MOUSE BUTTON UP ---
     if (event.type == SDL_MOUSEBUTTONUP)
     {
-        if (event.button.button == SDL_BUTTON_LEFT)
+		if (event.button.button == SDL_BUTTON_LEFT) //left button released
         {
 			//update mouse left button states
             mouseLeftReleased = true;
@@ -37,47 +38,47 @@ void InputManager::ProcessInput(SDL_Event& event)
         }
     }
 }
-
+//updates input states each frame
 void InputManager::Update()
 {
     // --- keyboard ---
-    const Uint8* keyboard = SDL_GetKeyboardState(&numKeys);
+	const Uint8* keyboard = SDL_GetKeyboardState(&numKeys); //get current keyboard state
     currentKeyStates = keyboard;
 
     if (previousKeyStates.empty())
-        previousKeyStates.resize(numKeys);
+		previousKeyStates.resize(numKeys); //initialize previous states on first run
 
 	// --- AXIS CALCULATION ---
-    xAxis = (currentKeyStates[SDL_SCANCODE_D] - currentKeyStates[SDL_SCANCODE_A]);
-    yAxis = (currentKeyStates[SDL_SCANCODE_S] - currentKeyStates[SDL_SCANCODE_W]);
+	xAxis = (currentKeyStates[SDL_SCANCODE_D] - currentKeyStates[SDL_SCANCODE_A]); //D - A
+	yAxis = (currentKeyStates[SDL_SCANCODE_S] - currentKeyStates[SDL_SCANCODE_W]); //S - W
 }
-
+//checks if a key is being held down
 bool InputManager::IsKeyHeld(SDL_Scancode key)
 {
-    return currentKeyStates[key];
+	return currentKeyStates[key]; //true if held down
 }
-
+//checks if a key was pressed this frame
 bool InputManager::IsKeyPressed(SDL_Scancode key)
 {
-    return currentKeyStates[key] && !previousKeyStates[key];
+	return currentKeyStates[key] && !previousKeyStates[key]; //not held last frame, held now
 }
-
+//checks if a key was released this frame
 bool InputManager::IsKeyReleased(SDL_Scancode key)
 {
-    return !currentKeyStates[key] && previousKeyStates[key];
+	return !currentKeyStates[key] && previousKeyStates[key]; //was held last frame, not held now
 }
-
+//stores the current key states as previous for next frame
 void InputManager::StorePreviousKeyStates()
 {
 	// --- MOUSE RESET FLAG ---
     mouseLeftPressed = false;
     mouseLeftReleased = false;
 
-    if (!previousKeyStates.empty())
+	if (!previousKeyStates.empty()) //safety check
     {
-        previousKeyStates.assign(
+        previousKeyStates.assign( 
             currentKeyStates,
-            currentKeyStates + numKeys
+			currentKeyStates + numKeys //assign current states to previous
         );
     }
 }
